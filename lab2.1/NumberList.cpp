@@ -6,16 +6,27 @@ using namespace std;
 void NumberList::Init()
 {
 	count = 0;
+	capacity = 1;
+	numbers = new int[capacity];
 }
 bool NumberList::Add(int x)
 {
-	if (count < 10) {
-		numbers[count] = x;
-		count = count + 1;
-		return true;
+	if (count >= capacity)
+	{
+		int newCapacity = capacity * 2;
+		int* temp = new int[newCapacity];
+
+		for (int i = 0; i < count; i++) {
+			temp[i] = numbers[i];
+		}
+		delete[] numbers;
+		numbers = temp;
+		capacity = newCapacity;
 	}
-	else
-		return false;
+
+	numbers[count] = x;
+	count = count + 1;
+	return true;
 
 }
 void NumberList::Sort()
@@ -33,4 +44,9 @@ void NumberList::Print()
 {
 	for (int i = 0; i < count; i++)
 		cout << numbers[i] << " ";
+}
+
+NumberList::~NumberList()
+{
+	delete[] numbers;
 }
