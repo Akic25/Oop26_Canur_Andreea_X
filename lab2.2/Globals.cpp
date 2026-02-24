@@ -1,12 +1,12 @@
 #include<iostream>
 #include "Globals.h"
 
-int CompareMathGrade(Grades s1, Grades s2)
+int CompareMathGrade(Grades *s1, Grades* s2)
 {
-	if (s1.getGrMa() > s2.getGrMa())
+	if (s1->getGrMa() > s2->getGrMa())
 		return 1;
 	else
-		if (s1.getGrMa() == s2.getGrMa())
+		if (s1->getGrMa() == s2->getGrMa())
 			return 0;
 		else
 			return -1;
@@ -23,7 +23,7 @@ int CompareEnglishGrade(Grades s1, Grades s2)
 			return -1;
 
 }
-int CompareHistoryGrade(Grades s1, Grades s2)
+int CompareHistoryGrade(Grades &s1, Grades &s2)
 {
 	if (s1.getGrHi() > s2.getGrHi())
 		return 1;
