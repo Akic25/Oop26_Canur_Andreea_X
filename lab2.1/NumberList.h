@@ -1,8 +1,9 @@
 #pragma once
 class NumberList
 {
-    int numbers[10];
+    int* numbers;
     int count;
+    int capacity;
 public:
     void Init();        
     bool Add(int x);      
